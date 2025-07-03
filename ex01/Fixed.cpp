@@ -5,38 +5,55 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lvan-bre <lvan-bre@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/02 00:13:56 by lvan-bre          #+#    #+#             */
-/*   Updated: 2025/07/02 21:18:27 by lvan-bre         ###   ########.fr       */
+/*   Created: 2025/07/02 14:07:15 by lvan-bre          #+#    #+#             */
+/*   Updated: 2025/07/03 01:59:15 by lvan-bre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
-Fixed::Fixed( void ) : _nmb(0) {
+int const Fixed::_bits = 8;
+
+Fixed::Fixed( void ) : _Value(0) {
 	std::cout << "Default constructor called" << std::endl;
 }
 
-Fixed::Fixed( Fixed &cp ) : _nmb(cp.getRawBits()) {
+Fixed::Fixed( int const intValue ) : _Value(intValue << _bits) {
+	std::cout << "Int constructor called" << std::endl;
+}
+
+Fixed::Fixed( float const floatValue ) : _Value(roundf( floatValue * ( 1 << _bits ))) {
+	std::cout << "Float constructor called" << std::endl;
+}
+
+Fixed::Fixed( Fixed const &copy) {
 	std::cout << "Copy constructor called" << std::endl;
+	*this = copy;
 }
 
 Fixed::~Fixed( void ) {
 	std::cout << "Destructor called" << std::endl;
 }
 
-int	Fixed::getRawBits( void ) const {
-	std::cout << "getRawBits member function called" << std::endl;
-	return (_nmb);
-}
-
-void Fixed::setRawBits( int const raw) {
-	std::cout << "setRawBits member function called" << std::endl;
-	_nmb = raw;
-}
-
-Fixed& Fixed::operator=( Fixed const &raw ) {
-	if (this != &raw)
-		std::cout << "Copy assignment operator called" << std::endl;
-	_nmb = raw.getRawBits();
+Fixed& Fixed::operator=( Fixed const &src ) {
+	std::cout << "Copy assignment operator called" << std::endl;
+	_Value = src.getRawBits();
 	return (*this);
+}
+
+int	Fixed::getRawBits( void ) const {
+	return (_Value);
+}
+
+float Fixed::toFloat( void ) const {
+	return ((float)_Value / (1 << _bits));
+}
+
+int	Fixed::toInt( void ) const {
+	return (_Value / (1 << _bits));
+}
+
+std::ostream &operator<<( std::ostream &o, Fixed const &src ) {
+	o << src.toFloat();
+	return (o);
 }
