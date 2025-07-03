@@ -1,2 +1,8 @@
+.vscode/
+*/.vscode
 */build
 ex00/Fixed
+ex01/FixedFloat
+ex02/debug_build
+ex02/opFixed
+ex02/Debug_opFixed

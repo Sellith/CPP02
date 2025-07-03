@@ -6,7 +6,7 @@
 /*   By: lvan-bre <lvan-bre@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 14:07:15 by lvan-bre          #+#    #+#             */
-/*   Updated: 2025/07/03 01:59:15 by lvan-bre         ###   ########.fr       */
+/*   Updated: 2025/07/03 21:30:05 by lvan-bre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ Fixed::Fixed( float const floatValue ) : _Value(roundf( floatValue * ( 1 << _bit
 }
 
 Fixed::Fixed( Fixed const &copy) {
-	std::cout << "Copy constructor called" << std::endl;
+	if ( this != &copy )
+		std::cout << "Copy constructor called" << std::endl;
 	*this = copy;
 }
 
@@ -35,7 +36,7 @@ Fixed::~Fixed( void ) {
 	std::cout << "Destructor called" << std::endl;
 }
 
-Fixed& Fixed::operator=( Fixed const &src ) {
+Fixed& Fixed::operator=( Fixed const & src ) {
 	std::cout << "Copy assignment operator called" << std::endl;
 	_Value = src.getRawBits();
 	return (*this);
@@ -53,7 +54,7 @@ int	Fixed::toInt( void ) const {
 	return (_Value / (1 << _bits));
 }
 
-std::ostream &operator<<( std::ostream &o, Fixed const &src ) {
+std::ostream& operator<<( std::ostream &o, Fixed const & src ) {
 	o << src.toFloat();
 	return (o);
 }
