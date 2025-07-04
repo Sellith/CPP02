@@ -6,7 +6,7 @@
 #    By: lvan-bre <lvan-bre@student.42lehavre.fr    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/12 21:29:22 by lvan-bre          #+#    #+#              #
-#    Updated: 2025/07/04 00:24:39 by lvan-bre         ###   ########.fr        #
+#    Updated: 2025/07/04 19:59:40 by lvan-bre         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ CLR_WTH		=	\033[1;97m
 
 ERS_STR		=	\033[2K\r
 
-SRCS		=	main.cpp Fixed.cpp
+SRCS		=	main.cpp Fixed.cpp bsp.cpp Point.cpp
 
 OBJS		=	$(patsubst %.cpp, $(BUILD_DIR)/%.o, $(SRCS))
 OBJS_DEBUG	=	$(patsubst %.cpp, $(DEBUG_DIR)/%.o, $(SRCS))

@@ -6,7 +6,7 @@
 /*   By: lvan-bre <lvan-bre@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 20:47:33 by lvan-bre          #+#    #+#             */
-/*   Updated: 2025/07/04 00:39:54 by lvan-bre         ###   ########.fr       */
+/*   Updated: 2025/07/04 20:20:04 by lvan-bre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,6 @@ private:
 
 } ;
 
-std::ostream&	operator<< (std::ostream & o, Fixed const & ref );
+std::ostream&	operator<< (std::ostream& o, Fixed const & ref );
 
 #endif
